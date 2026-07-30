@@ -16,3 +16,7 @@ const generateFunction = () => {
 }
 
 generateFunction();
+
+document.getElementById("parent").addEventListener("click", function(event) {
+    console.log(event.target.id, event.currentTarget.id);
+});
