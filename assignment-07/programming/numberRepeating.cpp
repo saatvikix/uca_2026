@@ -2,12 +2,19 @@
 #include <vector>
 using namespace std;
 
-int getNumber(vector<int> &arr) {
-
+int getNumber(const vector<int>& arr) {
     int ans = 0;
 
-    for(int x : arr) {
-        ans ^= x;
+    for (int bit = 0; bit < 32; bit++) {
+        int count = 0;
+
+        for (int x : arr) {
+            if (x & (1 << bit))
+                count++;
+        }
+
+        if (count % 3 != 0)
+            ans |= (1 << bit);
     }
 
     return ans;
@@ -15,9 +22,8 @@ int getNumber(vector<int> &arr) {
 
 int main() {
 
-    vector<int> arr1 = {1, 3, 5, 1, 5, 1, 3};
-    vector<int> arr2 = {2, 2, 3, 3, 4, 4, 4};
+    vector<int> arr1 = {1, 2, 3, 4, 1, 2, 4, 1, 2, 3, 4, 3, 3};
 
     cout<<getNumber(arr1)<<endl;
-    cout<<getNumber(arr2)<<endl;
+  
 }
