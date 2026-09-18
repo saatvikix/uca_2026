@@ -58,35 +58,48 @@ bool isSubList(Node* mainHead, Node* subHead) {
 
 int main() {
 
+    Node *list1 = new Node(1);
+    list1->next = new Node(2);
+    list1->next->next = new Node(3);
+    list1->next->next->next = new Node(4);
+    list1->next->next->next->next = new Node(5);
 
+    Node *list2 = new Node(1);
+    list2->next = new Node(2);
 
-    Node* mainHead = new Node(1);
+    cout<<"List 1: "; printList(list1);
+    cout<<"List2: ";printList(list2);
+    cout<<"Result: ";
 
-    mainHead->next = new Node(2);
-    mainHead->next->next = new Node(3);
-    mainHead->next->next->next = new Node(4);
-    mainHead->next->next->next->next = new Node(5);
-    mainHead->next->next->next->next->next = new Node(6);
-
-    Node* subHead = new Node(3);
-
-    subHead->next = new Node(4);
-    subHead->next->next = new Node(5);
-
-
-    cout << "Main List: ";
-    printList(mainHead);
-
-    cout << "Sub List: ";
-    printList(subHead);
-
-    if (isSubList(mainHead, subHead)) {
-        cout << "Sub-list found!" << endl;
+    if(isSubList(list1, list2)) {
+        cout<<"FOUND!!!"<<endl;
     }
-    else {
-        cout << "Sub-list not found!" << endl;
+    else{
+        cout<<"NOT FOUND!!!"<<endl;
     }
 
 
-    return 0;
+    Node *list3 = new Node(1);
+    list3->next = new Node(2);
+    list3->next->next = new Node(2);
+    list3->next->next->next = new Node(1);
+    list3->next->next->next->next = new Node(2);    
+    list3->next->next->next->next->next = new Node(3);  
+    
+    Node *list4 = new Node(1);
+    list4->next = new Node(2);
+    list4->next->next = new Node(3);
+    list4->next->next->next = new Node(4);
+
+    cout<<endl;
+    cout<<"List 3: "; printList(list3);
+    cout<<"List4: ";printList(list4);
+    cout<<"Result: ";
+
+    if(isSubList(list3, list4)) {
+        cout<<"FOUND!!!"<<endl;
+    }
+    else{
+        cout<<"NOT FOUND!!!"<<endl;
+    }
 }
